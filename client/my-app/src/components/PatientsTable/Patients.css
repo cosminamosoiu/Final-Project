@@ -11,7 +11,7 @@ input {
 
 label {
   display: inline;
-  font-size: smaller;
+  font-size: large;
   font-weight: bold;
   font-style: normal;
   border-color: #2b8807;
@@ -68,7 +68,7 @@ label {
   border-spacing: 10px;
 }
 
-.therapistsData {
+.patientData {
   font-size: large;
   font-weight: bold;
   font-style: normal;
@@ -79,5 +79,5 @@ label {
 
 .listData {
   font-weight: bolder;
-  font-size: x-small;
+  font-size: larger;
 }

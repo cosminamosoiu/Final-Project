@@ -1,0 +1,8 @@
+.main-footer {
+  color: black;
+  background: linear-gradient(90deg, rgb(9, 151, 4) 0%, rgb(15, 129, 4) 100%);
+  padding-top: 2em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

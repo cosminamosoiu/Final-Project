@@ -16,14 +16,15 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/get", (req, res) => {
+//--------------------THERAPISTs----------------------------------------------
+app.get("/apith/get", (req, res) => {
   const sqlSelect = "SELECT * FROM therapists";
   db.query(sqlSelect, (err, result) => {
     res.send(result);
   });
 });
 
-app.post("/api/insert", (req, res) => {
+app.post("/apith/insert", (req, res) => {
   const therapistName = req.body.therapistName;
   const fromThrapistSchedule = req.body.fromThrapistSchedule;
   const toThrapistSchedule = req.body.toThrapistSchedule;
@@ -34,19 +35,115 @@ app.post("/api/insert", (req, res) => {
     sqlInsert,
     [therapistName, fromThrapistSchedule, toThrapistSchedule],
     (err, result) => {
-      console.log(result);
+      //console.log(result);
     }
   );
 });
 
-app.delete("/api/delete/:therapistId", (req, res) => {
+app.delete("/apith/delete/:therapistId", (req, res) => {
   const id = req.params.therapistId;
-  const sqlDelete = "DELETE From therapists WHERE id_t = ?";
+  const sqlDelete = "DELETE FROM therapists WHERE id_t = ?";
 
   db.query(sqlDelete, id, (err, result) => {
     if (err) console.log(err);
   });
 });
+
+app.put("/apith/update", (req, res) => {
+  const id = req.body.therapistId;
+  const name = req.body.therapistName;
+  const from = req.body.therapistFrom;
+  const to = req.body.therapistTo;
+  const sqlUpdate =
+    "UPDATE therapists SET name_t=?, start_time_t=?, end_time_t=? WHERE id_t=?";
+
+  db.query(sqlUpdate, [name, from, to, id], (err, result) => {
+    if (err) console.log(err);
+  });
+}),
+  //--------------------end THERAPISTs----------------------------------------------
+
+  //--------------------PATIENTS--------------------------------------------------
+  app.get("/apipa/get", (req, res) => {
+    const sqlSelect = "SELECT * FROM patients";
+    db.query(sqlSelect, (err, result) => {
+      res.send(result);
+    });
+  });
+
+app.post("/apipa/insert", (req, res) => {
+  const patientName = req.body.patientName;
+  const patientPhone = req.body.patientPhone;
+  const patientEmail = req.body.patientEmail;
+  const patientDiagnosis = req.body.patientDiagnosis;
+
+  const sqlInsert =
+    "INSERT INTO patients (name_pa, phone_pa, email_pa, diagnosis_pa) VALUES (?,?,?,?)";
+  db.query(
+    sqlInsert,
+    [patientName, patientPhone, patientEmail, patientDiagnosis],
+    (err, result) => {
+      //console.log(result);
+    }
+  );
+});
+
+app.delete("/apipa/delete/:patientId", (req, res) => {
+  const id = req.params.patientId;
+  const sqlDelete = "DELETE FROM patients WHERE id_pa = ?";
+
+  db.query(sqlDelete, id, (err, result) => {
+    if (err) console.log(err);
+  });
+});
+
+app.put("/apipa/update", (req, res) => {
+  const id = req.body.patientId;
+  const name = req.body.patientName;
+  const phone = req.body.patientPhone;
+  const email = req.body.patientEmail;
+  const diagnosis = req.body.patientDiagnosis;
+  const sqlUpdate =
+    "UPDATE patients SET name_pa=?, phone_pa=?, email_pa=?, diagnosis_pa=? WHERE id_pa=?";
+
+  db.query(sqlUpdate, [name, phone, email, diagnosis, id], (err, result) => {
+    if (err) console.log(err);
+  });
+}),
+  //--------------------end PATIENTS------------------------------------------------
+
+  //--------------------APPOINTMENTS------------------------------------------------
+  app.get("/apiapp/get", (req, res) => {
+    const sqlSelect = "SELECT * FROM appointmets_pa";
+    db.query(sqlSelect, (err, result) => {
+      res.send(result);
+    });
+  });
+
+app.get("/apiapp/getPat", (req, res) => {
+  const sqlSelect = "SELECT * FROM patients";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.get("/apiapp/getTher", (req, res) => {
+  const sqlSelect = "SELECT * FROM therapists";
+  db.query(sqlSelect, (err, result) => {
+    res.send(result);
+  });
+});
+
+app.delete("/apiapp/delete/:appId", (req, res) => {
+  const id = req.params.appId;
+  const sqlDelete = "DELETE FROM appointments WHERE id_app = ?";
+
+  db.query(sqlDelete, id, (err, result) => {
+    if (err) console.log(err);
+  });
+});
+
+//--------------------END APPOINTMENTS----------------------------------------------
 
 app.listen(3002, () => {
   console.log("Running on port 3002");
