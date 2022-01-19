@@ -10,6 +10,7 @@ const db = mysql.createPool({
   user: "root2",
   password: "coschi",
   database: "finalprojectdatabase",
+  timezone: "utc",
 });
 
 app.use(cors());
@@ -93,7 +94,9 @@ app.delete("/apipa/delete/:patientId", (req, res) => {
   const sqlDelete = "DELETE FROM patients WHERE id_pa = ?";
 
   db.query(sqlDelete, id, (err, result) => {
-    if (err) console.log(err);
+    if (err) {
+      console.log(err);
+    }
   });
 });
 
@@ -114,7 +117,10 @@ app.put("/apipa/update", (req, res) => {
 
   //--------------------APPOINTMENTS------------------------------------------------
   app.get("/apiapp/get", (req, res) => {
-    const sqlSelect = "SELECT * FROM appointmets_pa";
+    const sqlSelect = `SELECT appointments_pa.id_app, appointments_pa.id_ter_app, 
+      appointments_pa.id_pat_app, appointments_pa.date_time_app, appointments_pa.observations_app, 
+      patients.name_pa as patient_name, therapists.name_t as therapist_name FROM appointments_pa INNER JOIN patients on appointments_pa.id_pat_app=patients.id_pa
+      INNER JOIN therapists on appointments_pa.id_ter_app=therapists.id_t`;
     db.query(sqlSelect, (err, result) => {
       res.send(result);
     });
@@ -134,9 +140,26 @@ app.get("/apiapp/getTher", (req, res) => {
   });
 });
 
+app.post("/apiapp/insert", (req, res) => {
+  const therapistId = req.body.therapistId;
+  const patientId = req.body.patientId;
+  const dateApp = req.body.dateApp;
+  const obsApp = req.body.obsApp;
+
+  const sqlInsert =
+    "INSERT INTO appointments_pa (id_ter_app, id_pat_app, date_time_app, observations_app) VALUES (?,?,?,?)";
+  db.query(
+    sqlInsert,
+    [therapistId, patientId, dateApp, obsApp],
+    (err, result) => {
+      //console.log(result);
+    }
+  );
+});
+
 app.delete("/apiapp/delete/:appId", (req, res) => {
   const id = req.params.appId;
-  const sqlDelete = "DELETE FROM appointments WHERE id_app = ?";
+  const sqlDelete = "DELETE FROM appointments_pa WHERE id_app = ?";
 
   db.query(sqlDelete, id, (err, result) => {
     if (err) console.log(err);

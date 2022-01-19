@@ -64,11 +64,16 @@ function Patients() {
   };
 
   return (
-    <div className='formData'>
-      <form className='form'>
-        <h1>Add new patient data</h1>
-        <label className='form-label'>Patient name:</label>
+    <div className='patientsData'>
+      <h2 className='patientsHeading'>
+        <i className='fas fa-user-plus'></i> Add new patient data
+      </h2>
+      <form className='patientsForm'>
+        <label className='patientsFormLabel'>
+          <i className='fas fa-user'></i> Patient name:
+        </label>
         <input
+          className='patientsFormInput'
           type='text'
           name='patientName'
           onChange={(e) => {
@@ -76,8 +81,12 @@ function Patients() {
           }}
         />
 
-        <label className='form-label'>Patient phone-number:</label>
+        <label className='patientsFormLabel'>
+          {" "}
+          <i className='fas fa-phone'></i>Patient phone-number:
+        </label>
         <input
+          className='patientsFormInput'
           type='text'
           name='patientPhone'
           onChange={(e) => {
@@ -85,8 +94,12 @@ function Patients() {
           }}
         />
 
-        <label className='form-label'>Patient email:</label>
+        <label className='patientsFormLabel'>
+          {" "}
+          <i className='fas fa-envelope'></i> Patient email:
+        </label>
         <input
+          className='patientsFormInput'
           type='text'
           name='patientEmail'
           onChange={(e) => {
@@ -94,8 +107,12 @@ function Patients() {
           }}
         />
 
-        <label className='form-label'>Patient diagnosis:</label>
+        <label className='patientsFormLabel'>
+          {" "}
+          <i className='fas fa-comment-medical'></i>Patient diagnosis:
+        </label>
         <input
+          className='patientsFormInput'
           type='text'
           name='patientDiagnosis'
           onChange={(e) => {
@@ -103,22 +120,42 @@ function Patients() {
           }}
         />
 
-        <button className='inputBtn' onClick={submitPatient}>
+        <button className='submitPatientsBtn' onClick={submitPatient}>
           <i className='fas fa-user-plus'></i>
           Add new patient
         </button>
       </form>
       <hr></hr>
-      <h1>Patients data</h1>
+
+      <h2 className='patientsHeading'>
+        <i className='fas fa-clipboard-list'></i> Patients data
+      </h2>
       {patientList.map((val) => {
         return (
-          <div className='patientData' key={val.id_pa}>
-            <li className='listData'>
-              Id: {val.id_pa} | Patient Name: {val.name_pa} | Phone:
-              {val.phone_pa} | Email:{val.email_pa} | Diagnosis:{" "}
-              {val.diagnosis_pa}{" "}
+          <div className='patientsListData' key={val.id_pa}>
+            <ul className='patientsUlData'>
+              {" "}
+              <li className='patientsListItem'>
+                {" "}
+                <i class='fas fa-arrow-alt-circle-right'></i> Id: {val.id_pa}
+              </li>
+              <li className='patientsListItem'>
+                <i className='fas fa-user'></i> Patient Name: {val.name_pa}
+              </li>
+              <li className='patientsListItem'>
+                <i className='fas fa-phone'></i> Phone:
+                {val.phone_pa}
+              </li>
+              <li className='patientsListItem'>
+                <i className='fas fa-envelope'></i> Email:
+                {val.email_pa}
+              </li>
+              <li className='patientsListItem'>
+                <i className='fas fa-comment-medical'></i> Diagnosis:{" "}
+                {val.diagnosis_pa}{" "}
+              </li>
               <button
-                className='deleteBtn'
+                className='deletePatientsBtn'
                 onClick={() => {
                   deletePatient(val.id_pa);
                 }}
@@ -127,40 +164,38 @@ function Patients() {
                 Delete
               </button>
               <br></br>
-              <label>
-                Patient name:
-                <input
-                  placeholder='Enter new name'
-                  type='text'
-                  id={`updateInputName-${val.id_pa}`}
-                ></input>
+              <label className='patientsListLabel'>Patient name:</label>
+              <input
+                className='patientsListInput'
+                placeholder='Enter new name'
+                type='text'
+                id={`updateInputName-${val.id_pa}`}
+              ></input>
+              <label className='patientsListLabel'>
+                Patient phone-number:{" "}
               </label>
-              <label>
-                Patient phone-number:
-                <input
-                  placeholder='Enter new phone-number'
-                  type='text'
-                  id={`updateInputPhone-${val.id_pa}`}
-                ></input>
-              </label>
-              <label>
-                Patient email:
-                <input
-                  placeholder='Enter new email'
-                  type='text'
-                  id={`updateInputEmail-${val.id_pa}`}
-                ></input>
-              </label>
-              <label>
-                Patient diagnosis:
-                <input
-                  placeholder='Enter new diagnosis'
-                  type='text'
-                  id={`updateInputDiagnosis-${val.id_pa}`}
-                ></input>
-              </label>
+              <input
+                className='patientsListInput'
+                placeholder='Enter new phone-number'
+                type='text'
+                id={`updateInputPhone-${val.id_pa}`}
+              ></input>
+              <label className='patientsListLabel'>Patient email: </label>
+              <input
+                className='patientsListInput'
+                placeholder='Enter new email'
+                type='text'
+                id={`updateInputEmail-${val.id_pa}`}
+              ></input>
+              <label className='patientsListLabel'>Patient diagnosis: </label>
+              <input
+                className='patientsListInput'
+                placeholder='Enter new diagnosis'
+                type='text'
+                id={`updateInputDiagnosis-${val.id_pa}`}
+              ></input>
               <button
-                className='updateBtn'
+                className='updatePatientsBtn'
                 onClick={() => {
                   updateName(val.id_pa);
                 }}
@@ -168,8 +203,7 @@ function Patients() {
                 <i className='fas fa-pencil-alt'></i>
                 Update
               </button>
-            </li>
-            <br></br>
+            </ul>
           </div>
         );
       })}

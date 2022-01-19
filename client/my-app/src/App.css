@@ -5,18 +5,12 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 10vh;
-}
-
-.content {
+html,
+body {
   height: 100%;
 }
 
-.content-wrap {
-  flex: 1;
+#root {
   height: 100%;
 }
 

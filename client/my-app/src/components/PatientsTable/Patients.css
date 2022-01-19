@@ -1,26 +1,87 @@
-input {
+.patientsForm {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30%;
+  padding: 15px;
+  border-spacing: 10px;
+  border-style: outset;
+  border-color: lightgreen;
+  border-radius: 20px;
+}
+
+.patientsFormInput {
   display: inline;
   padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  font-size: large;
+  font-size: medium;
   font-weight: 500;
   border-color: #2b8807;
+  margin-right: 10px;
 }
 
-label {
+.patientsFormLabel {
   display: inline;
-  font-size: large;
+  font-size: medium;
   font-weight: bold;
   font-style: normal;
   border-color: #2b8807;
   padding-bottom: 3px;
+  padding-right: 5px;
+  margin-left: 5px;
 }
 
-.updateBtn,
-.inputBtn {
-  padding: 8px 15px;
+.patientsHeading {
+  margin-top: 30px;
+  margin-left: 30px;
+  font-weight: bolder;
+}
+
+.patientsListInput {
+  display: inline;
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: medium;
+  font-weight: 500;
+  border-color: #2b8807;
+  margin-left: 3px;
+  margin-right: 10px;
+}
+
+.patientsListLabel {
+  display: inline;
+  font-size: medium;
+  font-weight: bold;
+  font-style: normal;
+  border-color: #2b8807;
+  padding-bottom: 3px;
+  padding-right: 5px;
+}
+
+.patientsListData {
+  font-size: large;
+  margin-right: 30%;
+  line-height: 150%;
+  border-style: outset;
+  border-radius: 20px;
+  border-color: lightgray;
+  margin-left: 20px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.patientsListItem {
+  display: inline;
+  margin-left: 15px;
+}
+
+.submitPatientsBtn,
+.updatePatientsBtn {
+  padding: 5px 10px;
   border-radius: 10px;
   outline: none;
   border: none;
@@ -28,11 +89,12 @@ label {
   color: rgb(12, 143, 12);
 }
 
-.updateBtn:hover {
-  padding: 8px 20px;
+.updatePatientsBtn:hover,
+.submitPatientsBtn:hover {
+  padding: 5px 15px;
   transition: cubic-bezier(1, 0, 0, 1);
   background: white;
-  color: rgb(15, 202, 15);
+  color: rgb(13, 146, 13);
   transition: 250ms;
 }
 
@@ -44,8 +106,8 @@ label {
   transition: 250ms;
 }
 
-.deleteBtn {
-  padding: 8px 18px;
+.deletePatientsBtn {
+  padding: 5px 10px;
   border-radius: 10px;
   outline: none;
   border: none;
@@ -53,31 +115,10 @@ label {
   color: rgb(173, 21, 29);
 }
 
-.deleteBtn:hover {
-  padding: 8px 20px;
+.deletePatientsBtn:hover {
+  padding: 5px 15px;
   transition: cubic-bezier(1, 0, 0, 1);
   background: white;
   color: rgba(219, 15, 15, 0.966);
   transition: 250ms;
-}
-
-.form {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  margin-left: 30px;
-  border-spacing: 10px;
-}
-
-.patientData {
-  font-size: large;
-  font-weight: bold;
-  font-style: normal;
-  margin-left: 10px;
-  padding-bottom: 3px;
-  border: rgb(15, 202, 15);
-}
-
-.listData {
-  font-weight: bolder;
-  font-size: larger;
 }
