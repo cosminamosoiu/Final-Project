@@ -15,23 +15,32 @@ const Footer = () => {
         <Row>
           <Column>
             <Heading>About</Heading>
-            <FooterLink href='#'>React</FooterLink>
-            <FooterLink href='#'>CRUD</FooterLink>
-            <FooterLink href='#'>Database</FooterLink>
+            <FooterLink>React</FooterLink>
+            <FooterLink>CRUD</FooterLink>
+            <FooterLink>Database</FooterLink>
           </Column>
 
           <Column>
             <Heading>Contact Us</Heading>
-            <FooterLink href='#'>Number: 07*****</FooterLink>
-            <FooterLink href='#'>Romania</FooterLink>
-            <FooterLink href='#'>Brasov</FooterLink>
-            <FooterLink href='#'>Street ***</FooterLink>
+            <FooterLink>Number: 07*****</FooterLink>
+            <FooterLink>Romania</FooterLink>
+            <FooterLink>Brasov</FooterLink>
+            <FooterLink>Street ***</FooterLink>
           </Column>
           <Column>
             <Heading>Social Media</Heading>
-            <FooterLink href='#'>
-              <i className='fab fa-facebook-f'>
-                <span style={{ marginLeft: "10px" }}>Facebook</span>
+
+            <FooterLink
+              target='_blank'
+              href='https://www.linkedin.com/in/cosmina-mo%C8%99oiu-9bb905142/'
+            >
+              <i className='fab fa-linkedin'>
+                <span style={{ marginLeft: "10px" }}>LinkedIn</span>
+              </i>
+            </FooterLink>
+            <FooterLink target='_blank' href='https://github.com/cosminamosoiu'>
+              <i className='fab fa-github'>
+                <span style={{ marginLeft: "10px" }}>Github</span>
               </i>
             </FooterLink>
             <FooterLink href='#'>
@@ -40,13 +49,8 @@ const Footer = () => {
               </i>
             </FooterLink>
             <FooterLink href='#'>
-              <i className='fab fa-twitter'>
-                <span style={{ marginLeft: "10px" }}>Twitter</span>
-              </i>
-            </FooterLink>
-            <FooterLink href='#'>
-              <i className='fab fa-youtube'>
-                <span style={{ marginLeft: "10px" }}>Youtube</span>
+              <i className='fab fa-facebook-f'>
+                <span style={{ marginLeft: "10px" }}>Facebook</span>
               </i>
             </FooterLink>
           </Column>
@@ -54,7 +58,7 @@ const Footer = () => {
         <div className='row' style={{ textAlign: "center" }}>
           <p className='col-sm'>
             &copy;{new Date().getFullYear()} Cosmina-Maria Mosoiu| All rights
-            reserved | Terms of service | Privacy
+            reserved
           </p>
         </div>
       </Container>

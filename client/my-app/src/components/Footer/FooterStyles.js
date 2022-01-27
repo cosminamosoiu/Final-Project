@@ -4,6 +4,7 @@ export const Box = styled.div`
   padding: 30px 15px;
   background: linear-gradient(90deg, rgb(9, 151, 4) 0%, rgb(15, 129, 4) 100%);
   position: relative;
+  margin-top: 30px;
   bottom: 0;
   width: 100%;
 
@@ -44,7 +45,7 @@ export const FooterLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: green;
+    color: grey;
     transition: 200ms ease-in;
   }
 `;

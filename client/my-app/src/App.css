@@ -7,7 +7,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: calc(100vh - 120px -218px);
 }
 
 #root {
@@ -15,5 +15,10 @@ body {
 }
 
 .App {
+  height: 100%;
+}
+
+.Header,
+.Footer {
   height: 100%;
 }

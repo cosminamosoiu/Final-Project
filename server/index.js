@@ -119,7 +119,8 @@ app.put("/apipa/update", (req, res) => {
   app.get("/apiapp/get", (req, res) => {
     const sqlSelect = `SELECT appointments_pa.id_app, appointments_pa.id_ter_app, 
       appointments_pa.id_pat_app, appointments_pa.date_time_app, appointments_pa.observations_app, 
-      patients.name_pa as patient_name, therapists.name_t as therapist_name FROM appointments_pa INNER JOIN patients on appointments_pa.id_pat_app=patients.id_pa
+      patients.name_pa as patient_name, therapists.name_t as therapist_name FROM appointments_pa 
+      INNER JOIN patients on appointments_pa.id_pat_app=patients.id_pa
       INNER JOIN therapists on appointments_pa.id_ter_app=therapists.id_t`;
     db.query(sqlSelect, (err, result) => {
       res.send(result);
